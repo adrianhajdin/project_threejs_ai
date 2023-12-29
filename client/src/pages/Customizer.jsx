@@ -24,6 +24,8 @@ const Customizer = () => {
     stylishShirt: false,
   })
 
+   const [isopen, setIsopen] = useState(false);
+
   // show tab content depending on the activeTab
   const generateTabContent = () => {
     switch (activeEditorTab) {
@@ -131,7 +133,12 @@ const Customizer = () => {
                   <Tab 
                     key={tab.name}
                     tab={tab}
-                    handleClick={() => setActiveEditorTab(tab.name)}
+                    handleClick={() => {
+                       setIsopen(!isopen)
+                        if(!isopen){
+                        setActiveEditorTab(tab.name)
+                      }else{setActiveEditorTab("")}
+                    }}
                   />
                 ))}
 
